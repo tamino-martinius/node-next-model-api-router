@@ -133,16 +133,16 @@
 
     _addRoute(options) {
       this._setRouteName(options);
-      options.route = '/' + options.name;
+      options.url = '/' + options.name;
       if (options.type === 'member') {
         options.identifier = pluralize(options.name, 1) + '_' + options.Klass.identifier;
-        options.route += '/:' + options.identifier;
+        options.url += '/:' + options.identifier;
       }
       options.path = trim(options.path, '/');
       if (options.path) {
-        options.route += '/' + options.path;
+        options.url += '/' + options.path;
       }
-      options.route += options.postfix || '';
+      options.url += options.postfix || '';
       this.routes.push(options);
     }
 

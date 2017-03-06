@@ -160,7 +160,7 @@ describe('NextModelApiRouter', function() {
       });
     });
     subject(() => $router.routes.map(
-      item => pick(item, ['method', 'route'])
+      item => pick(item, ['method', 'url'])
     ));
 
     def('defaults', () => undefined);
@@ -171,14 +171,14 @@ describe('NextModelApiRouter', function() {
 
     it('returns all default routes', function() {
       expect($subject).to.eql([
-        { method: 'post', route: '/klasses' },
-        { method: 'post', route: '/klasses/first' },
-        { method: 'post', route: '/klasses/last' },
-        { method: 'post', route: '/klasses/count' },
-        { method: 'post', route: '/klasses/create' },
-        { method: 'post', route: '/klass/:klass_id' },
-        { method: 'post', route: '/klass/:klass_id/update' },
-        { method: 'post', route: '/klass/:klass_id/delete' },
+        { method: 'post', url: '/klasses' },
+        { method: 'post', url: '/klasses/first' },
+        { method: 'post', url: '/klasses/last' },
+        { method: 'post', url: '/klasses/count' },
+        { method: 'post', url: '/klasses/create' },
+        { method: 'post', url: '/klass/:klass_id' },
+        { method: 'post', url: '/klass/:klass_id/update' },
+        { method: 'post', url: '/klass/:klass_id/delete' },
       ]);
     });
 
@@ -190,14 +190,14 @@ describe('NextModelApiRouter', function() {
 
         it('returns all default routes with singular table names', function() {
           expect($subject).to.eql([
-            { method: 'post', route: '/klass' },
-            { method: 'post', route: '/klass/first' },
-            { method: 'post', route: '/klass/last' },
-            { method: 'post', route: '/klass/count' },
-            { method: 'post', route: '/klass/create' },
-            { method: 'post', route: '/klass/:klass_id' },
-            { method: 'post', route: '/klass/:klass_id/update' },
-            { method: 'post', route: '/klass/:klass_id/delete' },
+            { method: 'post', url: '/klass' },
+            { method: 'post', url: '/klass/first' },
+            { method: 'post', url: '/klass/last' },
+            { method: 'post', url: '/klass/count' },
+            { method: 'post', url: '/klass/create' },
+            { method: 'post', url: '/klass/:klass_id' },
+            { method: 'post', url: '/klass/:klass_id/update' },
+            { method: 'post', url: '/klass/:klass_id/delete' },
           ]);
         });
       });
@@ -209,14 +209,14 @@ describe('NextModelApiRouter', function() {
 
         it('returns all default routes with pluralize table names', function() {
           expect($subject).to.eql([
-            { method: 'post', route: '/klasses' },
-            { method: 'post', route: '/klasses/first' },
-            { method: 'post', route: '/klasses/last' },
-            { method: 'post', route: '/klasses/count' },
-            { method: 'post', route: '/klasses/create' },
-            { method: 'post', route: '/klass/:klass_id' },
-            { method: 'post', route: '/klass/:klass_id/update' },
-            { method: 'post', route: '/klass/:klass_id/delete' },
+            { method: 'post', url: '/klasses' },
+            { method: 'post', url: '/klasses/first' },
+            { method: 'post', url: '/klasses/last' },
+            { method: 'post', url: '/klasses/count' },
+            { method: 'post', url: '/klasses/create' },
+            { method: 'post', url: '/klass/:klass_id' },
+            { method: 'post', url: '/klass/:klass_id/update' },
+            { method: 'post', url: '/klass/:klass_id/delete' },
           ]);
         });
       });
@@ -228,14 +228,14 @@ describe('NextModelApiRouter', function() {
 
         it('returns all default routes with unchanges table names', function() {
           expect($subject).to.eql([
-            { method: 'post', route: '/klasses' },
-            { method: 'post', route: '/klasses/first' },
-            { method: 'post', route: '/klasses/last' },
-            { method: 'post', route: '/klasses/count' },
-            { method: 'post', route: '/klasses/create' },
-            { method: 'post', route: '/klass/:klass_id' },
-            { method: 'post', route: '/klass/:klass_id/update' },
-            { method: 'post', route: '/klass/:klass_id/delete' },
+            { method: 'post', url: '/klasses' },
+            { method: 'post', url: '/klasses/first' },
+            { method: 'post', url: '/klasses/last' },
+            { method: 'post', url: '/klasses/count' },
+            { method: 'post', url: '/klasses/create' },
+            { method: 'post', url: '/klass/:klass_id' },
+            { method: 'post', url: '/klass/:klass_id/update' },
+            { method: 'post', url: '/klass/:klass_id/delete' },
           ]);
         });
 
@@ -244,14 +244,14 @@ describe('NextModelApiRouter', function() {
 
           it('returns all default routes with unchanges table names', function() {
             expect($subject).to.eql([
-              { method: 'post', route: '/klass' },
-              { method: 'post', route: '/klass/first' },
-              { method: 'post', route: '/klass/last' },
-              { method: 'post', route: '/klass/count' },
-              { method: 'post', route: '/klass/create' },
-              { method: 'post', route: '/klass/:klass_id' },
-              { method: 'post', route: '/klass/:klass_id/update' },
-              { method: 'post', route: '/klass/:klass_id/delete' },
+              { method: 'post', url: '/klass' },
+              { method: 'post', url: '/klass/first' },
+              { method: 'post', url: '/klass/last' },
+              { method: 'post', url: '/klass/count' },
+              { method: 'post', url: '/klass/create' },
+              { method: 'post', url: '/klass/:klass_id' },
+              { method: 'post', url: '/klass/:klass_id/update' },
+              { method: 'post', url: '/klass/:klass_id/delete' },
             ]);
           });
         });
@@ -264,14 +264,14 @@ describe('NextModelApiRouter', function() {
 
         it('returns all default routes with singular table names', function() {
           expect($subject).to.eql([
-            { method: 'post', route: '/klasses' },
-            { method: 'post', route: '/klasses/first' },
-            { method: 'post', route: '/klasses/last' },
-            { method: 'post', route: '/klasses/count' },
-            { method: 'post', route: '/klasses/create' },
-            { method: 'post', route: '/klass/:klass_id' },
-            { method: 'post', route: '/klass/:klass_id/update' },
-            { method: 'post', route: '/klass/:klass_id/delete' },
+            { method: 'post', url: '/klasses' },
+            { method: 'post', url: '/klasses/first' },
+            { method: 'post', url: '/klasses/last' },
+            { method: 'post', url: '/klasses/count' },
+            { method: 'post', url: '/klasses/create' },
+            { method: 'post', url: '/klass/:klass_id' },
+            { method: 'post', url: '/klass/:klass_id/update' },
+            { method: 'post', url: '/klass/:klass_id/delete' },
           ]);
         });
       });
@@ -283,14 +283,14 @@ describe('NextModelApiRouter', function() {
 
         it('returns all default routes with pluralize table names', function() {
           expect($subject).to.eql([
-            { method: 'post', route: '/klasses' },
-            { method: 'post', route: '/klasses/first' },
-            { method: 'post', route: '/klasses/last' },
-            { method: 'post', route: '/klasses/count' },
-            { method: 'post', route: '/klasses/create' },
-            { method: 'post', route: '/klasses/:klass_id' },
-            { method: 'post', route: '/klasses/:klass_id/update' },
-            { method: 'post', route: '/klasses/:klass_id/delete' },
+            { method: 'post', url: '/klasses' },
+            { method: 'post', url: '/klasses/first' },
+            { method: 'post', url: '/klasses/last' },
+            { method: 'post', url: '/klasses/count' },
+            { method: 'post', url: '/klasses/create' },
+            { method: 'post', url: '/klasses/:klass_id' },
+            { method: 'post', url: '/klasses/:klass_id/update' },
+            { method: 'post', url: '/klasses/:klass_id/delete' },
           ]);
         });
       });
@@ -302,14 +302,14 @@ describe('NextModelApiRouter', function() {
 
         it('returns all default routes with unchanges table names', function() {
           expect($subject).to.eql([
-            { method: 'post', route: '/klasses' },
-            { method: 'post', route: '/klasses/first' },
-            { method: 'post', route: '/klasses/last' },
-            { method: 'post', route: '/klasses/count' },
-            { method: 'post', route: '/klasses/create' },
-            { method: 'post', route: '/klasses/:klass_id' },
-            { method: 'post', route: '/klasses/:klass_id/update' },
-            { method: 'post', route: '/klasses/:klass_id/delete' },
+            { method: 'post', url: '/klasses' },
+            { method: 'post', url: '/klasses/first' },
+            { method: 'post', url: '/klasses/last' },
+            { method: 'post', url: '/klasses/count' },
+            { method: 'post', url: '/klasses/create' },
+            { method: 'post', url: '/klasses/:klass_id' },
+            { method: 'post', url: '/klasses/:klass_id/update' },
+            { method: 'post', url: '/klasses/:klass_id/delete' },
           ]);
         });
       });
@@ -321,14 +321,14 @@ describe('NextModelApiRouter', function() {
 
         it('returns all routes with custom name', function() {
           expect($subject).to.eql([
-            { method: 'post', route: '/foos' },
-            { method: 'post', route: '/foos/first' },
-            { method: 'post', route: '/foos/last' },
-            { method: 'post', route: '/foos/count' },
-            { method: 'post', route: '/foos/create' },
-            { method: 'post', route: '/foo/:foo_id' },
-            { method: 'post', route: '/foo/:foo_id/update' },
-            { method: 'post', route: '/foo/:foo_id/delete' },
+            { method: 'post', url: '/foos' },
+            { method: 'post', url: '/foos/first' },
+            { method: 'post', url: '/foos/last' },
+            { method: 'post', url: '/foos/count' },
+            { method: 'post', url: '/foos/create' },
+            { method: 'post', url: '/foo/:foo_id' },
+            { method: 'post', url: '/foo/:foo_id/update' },
+            { method: 'post', url: '/foo/:foo_id/delete' },
           ]);
         });
       });
@@ -340,14 +340,14 @@ describe('NextModelApiRouter', function() {
 
         it('returns all routes with default method', function() {
           expect($subject).to.eql([
-            { method: 'get', route: '/klasses' },
-            { method: 'get', route: '/klasses/first' },
-            { method: 'get', route: '/klasses/last' },
-            { method: 'get', route: '/klasses/count' },
-            { method: 'get', route: '/klasses/create' },
-            { method: 'get', route: '/klass/:klass_id' },
-            { method: 'get', route: '/klass/:klass_id/update' },
-            { method: 'get', route: '/klass/:klass_id/delete' },
+            { method: 'get', url: '/klasses' },
+            { method: 'get', url: '/klasses/first' },
+            { method: 'get', url: '/klasses/last' },
+            { method: 'get', url: '/klasses/count' },
+            { method: 'get', url: '/klasses/create' },
+            { method: 'get', url: '/klass/:klass_id' },
+            { method: 'get', url: '/klass/:klass_id/update' },
+            { method: 'get', url: '/klass/:klass_id/delete' },
           ]);
         });
       });
@@ -359,14 +359,14 @@ describe('NextModelApiRouter', function() {
 
         it('returns all routes with default postfix', function() {
           expect($subject).to.eql([
-            { method: 'post', route: '/klasses.json' },
-            { method: 'post', route: '/klasses/first.json' },
-            { method: 'post', route: '/klasses/last.json' },
-            { method: 'post', route: '/klasses/count.json' },
-            { method: 'post', route: '/klasses/create.json' },
-            { method: 'post', route: '/klass/:klass_id.json' },
-            { method: 'post', route: '/klass/:klass_id/update.json' },
-            { method: 'post', route: '/klass/:klass_id/delete.json' },
+            { method: 'post', url: '/klasses.json' },
+            { method: 'post', url: '/klasses/first.json' },
+            { method: 'post', url: '/klasses/last.json' },
+            { method: 'post', url: '/klasses/count.json' },
+            { method: 'post', url: '/klasses/create.json' },
+            { method: 'post', url: '/klass/:klass_id.json' },
+            { method: 'post', url: '/klass/:klass_id/update.json' },
+            { method: 'post', url: '/klass/:klass_id/delete.json' },
           ]);
         });
       });
@@ -385,7 +385,7 @@ describe('NextModelApiRouter', function() {
 
           it('returns only default actions from array', function() {
             expect($subject).to.eql([
-              { method: 'post', route: '/klasses' },
+              { method: 'post', url: '/klasses' },
             ]);
           });
         });
@@ -395,8 +395,8 @@ describe('NextModelApiRouter', function() {
 
           it('returns only default actions from array', function() {
             expect($subject).to.eql([
-              { method: 'post', route: '/klasses' },
-              { method: 'post', route: '/klass/:klass_id' },
+              { method: 'post', url: '/klasses' },
+              { method: 'post', url: '/klass/:klass_id' },
             ]);
           });
         });
@@ -415,7 +415,7 @@ describe('NextModelApiRouter', function() {
 
           it('returns only default actions from object', function() {
             expect($subject).to.eql([
-              { method: 'post', route: '/klasses' },
+              { method: 'post', url: '/klasses' },
             ]);
           });
 
@@ -424,7 +424,7 @@ describe('NextModelApiRouter', function() {
 
             it('returns action with path', function() {
               expect($subject).to.eql([
-                { method: 'post', route: '/klasses/foo' },
+                { method: 'post', url: '/klasses/foo' },
               ]);
             });
 
@@ -433,7 +433,7 @@ describe('NextModelApiRouter', function() {
 
               it('returns action with path', function() {
                 expect($subject).to.eql([
-                  { method: 'post', route: '/klasses/foo' },
+                  { method: 'post', url: '/klasses/foo' },
                 ]);
               });
             });
@@ -443,7 +443,7 @@ describe('NextModelApiRouter', function() {
 
               it('returns action with path', function() {
                 expect($subject).to.eql([
-                  { method: 'post', route: '/klasses/foo' },
+                  { method: 'post', url: '/klasses/foo' },
                 ]);
               });
             });
@@ -454,7 +454,7 @@ describe('NextModelApiRouter', function() {
 
             it('returns action with method', function() {
               expect($subject).to.eql([
-                { method: 'get', route: '/klasses' },
+                { method: 'get', url: '/klasses' },
               ]);
             });
           });
@@ -464,7 +464,7 @@ describe('NextModelApiRouter', function() {
 
             it('returns action with name transform', function() {
               expect($subject).to.eql([
-                { method: 'post', route: '/klass' },
+                { method: 'post', url: '/klass' },
               ]);
             });
           });
@@ -474,7 +474,7 @@ describe('NextModelApiRouter', function() {
 
             it('returns action with postfix', function() {
               expect($subject).to.eql([
-                { method: 'post', route: '/klasses.json' },
+                { method: 'post', url: '/klasses.json' },
               ]);
             });
           });
@@ -485,8 +485,8 @@ describe('NextModelApiRouter', function() {
 
           it('returns only default actions from object', function() {
             expect($subject).to.eql([
-              { method: 'post', route: '/klasses' },
-              { method: 'post', route: '/klass/:klass_id' },
+              { method: 'post', url: '/klasses' },
+              { method: 'post', url: '/klass/:klass_id' },
             ]);
           });
         });
@@ -498,14 +498,14 @@ describe('NextModelApiRouter', function() {
 
       it('returns all default routes', function() {
         expect($subject).to.eql([
-          { method: 'post', route: '/klasses' },
-          { method: 'post', route: '/klasses/first' },
-          { method: 'post', route: '/klasses/last' },
-          { method: 'post', route: '/klasses/count' },
-          { method: 'post', route: '/klasses/create' },
-          { method: 'post', route: '/klass/:klass_id' },
-          { method: 'post', route: '/klass/:klass_id/update' },
-          { method: 'post', route: '/klass/:klass_id/delete' },
+          { method: 'post', url: '/klasses' },
+          { method: 'post', url: '/klasses/first' },
+          { method: 'post', url: '/klasses/last' },
+          { method: 'post', url: '/klasses/count' },
+          { method: 'post', url: '/klasses/create' },
+          { method: 'post', url: '/klass/:klass_id' },
+          { method: 'post', url: '/klass/:klass_id/update' },
+          { method: 'post', url: '/klass/:klass_id/delete' },
         ]);
       });
 
@@ -514,13 +514,13 @@ describe('NextModelApiRouter', function() {
 
         it('returns all default actions except passed keys', function() {
           expect($subject).to.eql([
-            { method: 'post', route: '/klasses' },
-            { method: 'post', route: '/klasses/first' },
-            { method: 'post', route: '/klasses/last' },
-            { method: 'post', route: '/klasses/count' },
-            { method: 'post', route: '/klasses/create' },
-            { method: 'post', route: '/klass/:klass_id' },
-            { method: 'post', route: '/klass/:klass_id/update' },
+            { method: 'post', url: '/klasses' },
+            { method: 'post', url: '/klasses/first' },
+            { method: 'post', url: '/klasses/last' },
+            { method: 'post', url: '/klasses/count' },
+            { method: 'post', url: '/klasses/create' },
+            { method: 'post', url: '/klass/:klass_id' },
+            { method: 'post', url: '/klass/:klass_id/update' },
           ]);
         });
       });
@@ -530,11 +530,11 @@ describe('NextModelApiRouter', function() {
 
         it('returns all default actions except passed keys', function() {
           expect($subject).to.eql([
-            { method: 'post', route: '/klasses' },
-            { method: 'post', route: '/klasses/first' },
-            { method: 'post', route: '/klasses/last' },
-            { method: 'post', route: '/klasses/count' },
-            { method: 'post', route: '/klass/:klass_id' },
+            { method: 'post', url: '/klasses' },
+            { method: 'post', url: '/klasses/first' },
+            { method: 'post', url: '/klasses/last' },
+            { method: 'post', url: '/klasses/count' },
+            { method: 'post', url: '/klass/:klass_id' },
           ]);
         });
       });
@@ -555,7 +555,7 @@ describe('NextModelApiRouter', function() {
 
           it('creates collection actions from array', function() {
             expect($subject).to.eql([
-              { method: 'post', route: '/klasses/foo' },
+              { method: 'post', url: '/klasses/foo' },
             ]);
           });
         });
@@ -565,8 +565,8 @@ describe('NextModelApiRouter', function() {
 
           it('creates collection actions from array', function() {
             expect($subject).to.eql([
-              { method: 'post', route: '/klasses/foo' },
-              { method: 'post', route: '/klasses/bar' },
+              { method: 'post', url: '/klasses/foo' },
+              { method: 'post', url: '/klasses/bar' },
             ]);
           });
         });
@@ -585,7 +585,7 @@ describe('NextModelApiRouter', function() {
 
           it('creates collection actions from object', function() {
             expect($subject).to.eql([
-              { method: 'post', route: '/klasses/foo' },
+              { method: 'post', url: '/klasses/foo' },
             ]);
           });
 
@@ -594,7 +594,7 @@ describe('NextModelApiRouter', function() {
 
             it('returns action with path', function() {
               expect($subject).to.eql([
-                { method: 'post', route: '/klasses/bar' },
+                { method: 'post', url: '/klasses/bar' },
               ]);
             });
 
@@ -603,7 +603,7 @@ describe('NextModelApiRouter', function() {
 
               it('returns action with path', function() {
                 expect($subject).to.eql([
-                  { method: 'post', route: '/klasses/bar' },
+                  { method: 'post', url: '/klasses/bar' },
                 ]);
               });
             });
@@ -613,7 +613,7 @@ describe('NextModelApiRouter', function() {
 
               it('returns action with path', function() {
                 expect($subject).to.eql([
-                  { method: 'post', route: '/klasses/bar' },
+                  { method: 'post', url: '/klasses/bar' },
                 ]);
               });
             });
@@ -624,7 +624,7 @@ describe('NextModelApiRouter', function() {
 
             it('returns action with method', function() {
               expect($subject).to.eql([
-                { method: 'get', route: '/klasses/foo' },
+                { method: 'get', url: '/klasses/foo' },
               ]);
             });
           });
@@ -634,7 +634,7 @@ describe('NextModelApiRouter', function() {
 
             it('returns action with name transform', function() {
               expect($subject).to.eql([
-                { method: 'post', route: '/klass/foo' },
+                { method: 'post', url: '/klass/foo' },
               ]);
             });
           });
@@ -644,7 +644,7 @@ describe('NextModelApiRouter', function() {
 
             it('returns action with postfix', function() {
               expect($subject).to.eql([
-                { method: 'post', route: '/klasses/foo.json' },
+                { method: 'post', url: '/klasses/foo.json' },
               ]);
             });
           });
@@ -655,8 +655,8 @@ describe('NextModelApiRouter', function() {
 
           it('returns collection default actions from object', function() {
             expect($subject).to.eql([
-              { method: 'post', route: '/klasses/foo' },
-              { method: 'post', route: '/klasses/bar' },
+              { method: 'post', url: '/klasses/foo' },
+              { method: 'post', url: '/klasses/bar' },
             ]);
           });
         });
@@ -678,7 +678,7 @@ describe('NextModelApiRouter', function() {
 
           it('creates member actions from array', function() {
             expect($subject).to.eql([
-              { method: 'post', route: '/klass/:klass_id/foo' },
+              { method: 'post', url: '/klass/:klass_id/foo' },
             ]);
           });
         });
@@ -688,8 +688,8 @@ describe('NextModelApiRouter', function() {
 
           it('creates member actions from array', function() {
             expect($subject).to.eql([
-              { method: 'post', route: '/klass/:klass_id/foo' },
-              { method: 'post', route: '/klass/:klass_id/bar' },
+              { method: 'post', url: '/klass/:klass_id/foo' },
+              { method: 'post', url: '/klass/:klass_id/bar' },
             ]);
           });
         });
@@ -708,7 +708,7 @@ describe('NextModelApiRouter', function() {
 
           it('creates member actions from object', function() {
             expect($subject).to.eql([
-              { method: 'post', route: '/klass/:klass_id/foo' },
+              { method: 'post', url: '/klass/:klass_id/foo' },
             ]);
           });
 
@@ -717,7 +717,7 @@ describe('NextModelApiRouter', function() {
 
             it('returns action with path', function() {
               expect($subject).to.eql([
-                { method: 'post', route: '/klass/:klass_id/bar' },
+                { method: 'post', url: '/klass/:klass_id/bar' },
               ]);
             });
 
@@ -726,7 +726,7 @@ describe('NextModelApiRouter', function() {
 
               it('returns action with path', function() {
                 expect($subject).to.eql([
-                  { method: 'post', route: '/klass/:klass_id/bar' },
+                  { method: 'post', url: '/klass/:klass_id/bar' },
                 ]);
               });
             });
@@ -736,7 +736,7 @@ describe('NextModelApiRouter', function() {
 
               it('returns action with path', function() {
                 expect($subject).to.eql([
-                  { method: 'post', route: '/klass/:klass_id/bar' },
+                  { method: 'post', url: '/klass/:klass_id/bar' },
                 ]);
               });
             });
@@ -747,7 +747,7 @@ describe('NextModelApiRouter', function() {
 
             it('returns action with method', function() {
               expect($subject).to.eql([
-                { method: 'get', route: '/klass/:klass_id/foo' },
+                { method: 'get', url: '/klass/:klass_id/foo' },
               ]);
             });
           });
@@ -757,7 +757,7 @@ describe('NextModelApiRouter', function() {
 
             it('returns action with name transform', function() {
               expect($subject).to.eql([
-                { method: 'post', route: '/klasses/:klass_id/foo' },
+                { method: 'post', url: '/klasses/:klass_id/foo' },
               ]);
             });
           });
@@ -767,7 +767,7 @@ describe('NextModelApiRouter', function() {
 
             it('returns action with postfix', function() {
               expect($subject).to.eql([
-                { method: 'post', route: '/klass/:klass_id/foo.json' },
+                { method: 'post', url: '/klass/:klass_id/foo.json' },
               ]);
             });
           });
@@ -778,8 +778,8 @@ describe('NextModelApiRouter', function() {
 
           it('returns member default actions from object', function() {
             expect($subject).to.eql([
-              { method: 'post', route: '/klass/:klass_id/foo' },
-              { method: 'post', route: '/klass/:klass_id/bar' },
+              { method: 'post', url: '/klass/:klass_id/foo' },
+              { method: 'post', url: '/klass/:klass_id/bar' },
             ]);
           });
         });
