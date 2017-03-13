@@ -1,7 +1,6 @@
 'use strict';
 
 const NextModelApiRouter = require('..');
-const NextModel = require('next-model');
 const expect = require('expect.js');
 const pluralize = require('pluralize');
 
@@ -10,16 +9,6 @@ const pick = lodash.pick;
 
 describe('NextModelApiRouter', function() {
   this.timeout(10000);
-
-  def('Klass', () => class Klass extends NextModel {
-    static get modelName() {
-      return 'Klass';
-    }
-
-    static get tableName() {
-      return $tableName || super.tableName;
-    }
-  });
 
   def('Router', () => class Router extends NextModelApiRouter{
     static get isClient() {
@@ -37,7 +26,8 @@ describe('NextModelApiRouter', function() {
     version: $version,
   }));
 
-  def('tableName', () => undefined);
+  def('modelName', () => 'Klass');
+  def('name', () => undefined);
   def('isClient', () => false);
   def('resourceDefaults', () => undefined);
   def('domain', () => undefined);
@@ -151,7 +141,7 @@ describe('NextModelApiRouter', function() {
 
   describe('#resource()', function() {
     beforeEach(function() {
-      $router.resource($Klass, {
+      $router.resource($modelName, {
         defaults: $defaults,
         only: $only,
         except: $except,
@@ -228,27 +218,30 @@ describe('NextModelApiRouter', function() {
 
         it('returns all default routes with unchanges table names', function() {
           expect($subject).to.eql([
-            { method: 'post', url: '/klasses' },
-            { method: 'post', url: '/klasses/first' },
-            { method: 'post', url: '/klasses/last' },
-            { method: 'post', url: '/klasses/count' },
-            { method: 'post', url: '/klasses/create' },
+            { method: 'post', url: '/klass' },
+            { method: 'post', url: '/klass/first' },
+            { method: 'post', url: '/klass/last' },
+            { method: 'post', url: '/klass/count' },
+            { method: 'post', url: '/klass/create' },
             { method: 'post', url: '/klass/:klass_id' },
             { method: 'post', url: '/klass/:klass_id/update' },
             { method: 'post', url: '/klass/:klass_id/delete' },
           ]);
         });
 
-        context('when tableName is singular', function() {
-          def('tableName', () => 'klass');
+        context('when name is plural', function() {
+          def('defaults', () => ({
+            collectionTransform: 'none',
+            name: 'klasses',
+          }));
 
           it('returns all default routes with unchanges table names', function() {
             expect($subject).to.eql([
-              { method: 'post', url: '/klass' },
-              { method: 'post', url: '/klass/first' },
-              { method: 'post', url: '/klass/last' },
-              { method: 'post', url: '/klass/count' },
-              { method: 'post', url: '/klass/create' },
+              { method: 'post', url: '/klasses' },
+              { method: 'post', url: '/klasses/first' },
+              { method: 'post', url: '/klasses/last' },
+              { method: 'post', url: '/klasses/count' },
+              { method: 'post', url: '/klasses/create' },
               { method: 'post', url: '/klass/:klass_id' },
               { method: 'post', url: '/klass/:klass_id/update' },
               { method: 'post', url: '/klass/:klass_id/delete' },
@@ -307,29 +300,29 @@ describe('NextModelApiRouter', function() {
             { method: 'post', url: '/klasses/last' },
             { method: 'post', url: '/klasses/count' },
             { method: 'post', url: '/klasses/create' },
-            { method: 'post', url: '/klasses/:klass_id' },
-            { method: 'post', url: '/klasses/:klass_id/update' },
-            { method: 'post', url: '/klasses/:klass_id/delete' },
+            { method: 'post', url: '/klass/:klass_id' },
+            { method: 'post', url: '/klass/:klass_id/update' },
+            { method: 'post', url: '/klass/:klass_id/delete' },
           ]);
         });
-      });
+        context('when name is plural', function() {
+          def('defaults', () => ({
+            memberTransform: 'none',
+            name: 'klasses',
+          }));
 
-      context('when defaults.name is present', function() {
-        def('defaults', () => ({
-          name: 'foo',
-        }));
-
-        it('returns all routes with custom name', function() {
-          expect($subject).to.eql([
-            { method: 'post', url: '/foos' },
-            { method: 'post', url: '/foos/first' },
-            { method: 'post', url: '/foos/last' },
-            { method: 'post', url: '/foos/count' },
-            { method: 'post', url: '/foos/create' },
-            { method: 'post', url: '/foo/:foo_id' },
-            { method: 'post', url: '/foo/:foo_id/update' },
-            { method: 'post', url: '/foo/:foo_id/delete' },
-          ]);
+          it('returns all default routes with unchanges table names', function() {
+            expect($subject).to.eql([
+              { method: 'post', url: '/klasses' },
+              { method: 'post', url: '/klasses/first' },
+              { method: 'post', url: '/klasses/last' },
+              { method: 'post', url: '/klasses/count' },
+              { method: 'post', url: '/klasses/create' },
+              { method: 'post', url: '/klasses/:klass_id' },
+              { method: 'post', url: '/klasses/:klass_id/update' },
+              { method: 'post', url: '/klasses/:klass_id/delete' },
+            ]);
+          });
         });
       });
 
