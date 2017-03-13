@@ -46,7 +46,7 @@ const router = new NextModelApiRouter({
   version: 'v1',
 });
 
-router.resouce(User);
+router.resouce('User'); // modelName
 ~~~
 
 _Routes:_
@@ -64,7 +64,7 @@ delete : POST http://example.com/api/v1/user/:user_id/delete
 
 Pick only some default actions:
 ~~~js
-router.resouce(User, {
+router.resouce('User', {
   only: ['all'],
 });
 ~~~
@@ -77,7 +77,7 @@ all    : POST /users
 
 Modify default actions:
 ~~~js
-router.resouce(User, {
+router.resouce('User', {
   only: {
     all: { method: 'get' },
   },
@@ -91,7 +91,7 @@ all    : GET  /users
 
 Exclude some default actions:
 ~~~js
-router.resouce(User, {
+router.resouce('User', {
   except: ['create', 'update', 'delete'],
 });
 ~~~
@@ -108,7 +108,7 @@ show   : POST /user/:user_id
 
 Add collection actions:
 ~~~js
-router.resouce(User, {
+router.resouce('User', {
   only: [],
   collection: ['foo'],
 });
@@ -121,7 +121,7 @@ foo    : POST /users/foo
 
 Customize collection actions:
 ~~~js
-router.resouce(User, {
+router.resouce('User', {
   only: [],
   collection: {
     foo: { path: 'bar' },
@@ -136,7 +136,7 @@ foo    : POST /users/bar
 
 Add member actions:
 ~~~js
-router.resouce(User, {
+router.resouce('User', {
   only: [],
   member: ['foo'],
 });
@@ -149,7 +149,7 @@ foo    : POST /user/:user_id/foo
 
 Customize member actions:
 ~~~js
-router.resouce(User, {
+router.resouce('User', {
   only: [],
   member: {
     foo: { path: 'bar' },
@@ -173,7 +173,7 @@ const router = new NextModelApiRouter({
   version: 'v1',
 });
 
-router.resouce(User);
+router.resouce('User');
 ~~~
 
 _Routes:_
@@ -301,7 +301,7 @@ _Default:_
 The name of the resource is inherited by the tableName of the model. This can be changed with the `name` property:
 
 ~~~js
-router.resouce(User, {
+router.resouce('User', {
   collection: {
     defaults: { name: 'foo' },
   },
@@ -326,7 +326,7 @@ delete : POST /foo/:foo_id/delete
 The `path` can be defined for every action. The default action has already predefined paths. The custom collection or member actions have a default path which matches the action name.
 
 ~~~js
-router.resouce(User, {
+router.resouce('User', {
   collection: {
     foo: {},
   },
@@ -340,7 +340,7 @@ foo    : POST /users/foo
 
 With custom path:
 ~~~js
-router.resouce(User, {
+router.resouce('User', {
   collection: {
     foo: { path: 'bar' },
   },
@@ -362,7 +362,7 @@ _Please Note:_
 The default is `post` for every route, cause the filter payload can be too large for query strings. Its not recommended to use `get` or other requests where payload is within the querystring.
 
 ~~~js
-router.resouce(User, {
+router.resouce('User', {
   only: {
     all: { method: 'get' },
     first: { method: 'get' },
@@ -394,7 +394,7 @@ delete : DELETE /user/:user_id/delete
 The name of the resouce can be changed per action, but its recommended to change it per resource with the [defaults](#defaults) settings.
 
 ~~~js
-router.resouce(User, {
+router.resouce('User', {
   only: {
     all: {},
     first: {},
@@ -420,7 +420,7 @@ delete : POST /bar/:bar_id/delete
 The name is automatically transformed to plural on collection actions and transformed to singular on member actions by the [default](#defaults) settings. Possible transforms are `pluralize`, `singularize` and `none`.
 
 ~~~js
-router.resouce(User, {
+router.resouce('User', {
   only: {
     all: {},
     first: {},
@@ -446,7 +446,7 @@ delete : POST /users/:user_id/delete
 The name of the resouce can be changed per action, but its recommended to change it per resource with the [defaults](#defaults) settings.
 
 ~~~js
-router.resouce(User, {
+router.resouce('User', {
   only: {
     all: {},
     first: {},
