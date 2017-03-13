@@ -14,13 +14,17 @@
   const pluralize = context.pluralize;
   const lodash = context.lodash || context._;
 
+  const capitalize = lodash.capitalize;
   const compact = lodash.compact;
   const defaults = lodash.defaults;
   const defaultsDeep = lodash.defaultsDeep;
   const keys = lodash.keys;
+  const mapValues = lodash.mapValues;
   const omit = lodash.omit;
   const pick = lodash.pick;
   const isArray = lodash.isArray;
+  const snakeCase = lodash.snakeCase;
+  const toLower = lodash.toLower;
   const trim = lodash.trim;
   const trimEnd = lodash.trimEnd;
   const zipObject = lodash.zipObject;
@@ -31,7 +35,7 @@
     }
 
     static get defaultActions() {
-      return {
+      return mapValues({
         all:    { type: 'collection', path: '' },
         first:  { type: 'collection', path: 'first' },
         last:   { type: 'collection', path: 'last' },
@@ -40,7 +44,10 @@
         show:   { type: 'member',     path: '' },
         update: { type: 'member',     path: 'update' },
         delete: { type: 'member',     path: 'delete' },
-      };
+      }, (value) => {
+        value.isDefaultAction = true;
+        return value;
+      });
     }
 
     static get resourceDefaults() {
@@ -67,10 +74,10 @@
       return this._root;
     }
 
-    resource(Klass, optionsParam) {
+    resource(modelName, optionsParam) {
       const options = optionsParam || {};
       const actionDefaults = defaults(
-        { Klass },
+        { modelName },
         options.defaults,
         this.constructor.resourceDefaults
       );
@@ -135,7 +142,7 @@
       this._setRouteName(options);
       options.url = '/' + options.name;
       if (options.type === 'member') {
-        options.identifier = pluralize(options.name, 1) + '_' + options.Klass.identifier;
+        options.identifier = pluralize(options.name, 1) + '_id';
         options.url += '/:' + options.identifier;
       }
       options.path = trim(options.path, '/');
@@ -148,8 +155,9 @@
 
     _setRouteName(options) {
       if (!options.name) {
-        options.name = options.Klass.tableName;
+        options.name = options.modelName;
       }
+      options.name = snakeCase(options.name);
       const transform = options.transform || options[options.type + 'Transform'];
       if (transform === 'pluralize') {
         options.name = pluralize(options.name);
