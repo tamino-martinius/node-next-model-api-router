@@ -1,6 +1,6 @@
 {
   "name": "next-model-api-router",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Api Router for next-model package.",
   "author": "Tamino Martinius <dev@zaku.eu>",
   "license": "MIT",
